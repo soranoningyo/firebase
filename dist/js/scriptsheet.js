@@ -1,1 +1,1 @@
-"use strict";var x=5;console.log(x);
+"use strict";var config={apiKey:"AIzaSyCe1QexEQjRbiM-1zubU2qXJAzn1tgdvfI",authDomain:"fire-cafe-f1.firebaseapp.com",databaseURL:"https://fire-cafe-f1.firebaseio.com",projectId:"fire-cafe-f1",storageBucket:"fire-cafe-f1.appspot.com",messagingSenderId:"467461343011"};firebase.initializeApp(config);var dataBase=firebase.firestore();dataBase.settings({timestampsInSnapshots:!0}),dataBase.collection("Coffees").get().then(function(e){console.log(e.docs)});
