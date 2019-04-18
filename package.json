@@ -1,0 +1,39 @@
+{
+  "name": "firebase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahmed",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-notify": "^3.2.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "gulp-htmlmin": "^5.0.1",
+    "imagemin-jpegtran": "^6.0.0",
+    "imagemin-pngquant": "^7.0.0",
+    "static-server": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soranoningyo/firebase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soranoningyo/firebase/issues"
+  },
+  "homepage": "https://github.com/soranoningyo/firebase#readme",
+  "description": ""
+}

@@ -1,0 +1,21 @@
+@import "bootstrap/vendor/rfs";
+
+.ja {
+
+    @include responsive-font-size(30px);
+}
+*,
+*::after,
+*::before{
+    text-transform: capitalize !important;
+}
+.container {
+    overflow: hidden;
+    padding-top: 50px
+}
+.container img {
+    float: left;
+    margin-right: 40px;
+}
+
+
