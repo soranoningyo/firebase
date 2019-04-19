@@ -13,8 +13,7 @@ h1{
     color: rgb(241, 234, 234);
     @include responsive-font-size(64px);
     letter-spacing: 2px;
-    margin-top: 80px;
-    text-align: center;
+    margin: 80px 0 50px;
     i {
         color: rgb(243, 188, 188)
     }
@@ -22,87 +21,107 @@ h1{
 
 .content{
     background: rgb(235, 228, 228);
-    max-width: 960px;
-    margin: 30px auto;
     padding:  20px 30px;
     border-radius: 10px 120px 10px 10px;
-    box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
-}
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 
 
-
-li{
-    padding: 20px;
-    background: #f6f6f6;
-    @include responsive-font-size(20px);
-    color: #555;
-    position: relative;
-    border-bottom: 1px solid #e6e6e6;
-    height: 46px;
-
-    &:nth-child(even){
-        padding: 20px;
-        background: #f2f2f2;
+    ul {
+        border-radius: 10px 120px 10px 10px;
+        li{
+            padding: 20px;
+            background: #f8d7d7;
+            @include responsive-font-size(20px);
+            color: rgb(83, 45, 45);
+            position: relative;
+            border-bottom: 1px solid #e6e6e6;
+            &:nth-child(even){
+                background: rgb(255, 197, 197);
+            }
+            span{
+                display: block;
+                @include responsive-font-size(25px)
+            }
+            span:not(:nth-of-type(1)) {
+                font-size: 16px;
+                margin-top: 6px;
+                color: rgb(109, 88, 88);
+                display: inline-block;
+                
+            }
+            span:nth-of-type(2) {
+                margin-left: 20px;
+                &::after {
+                    content: "-";
+                    font-size: 18px;
+                    margin-left: 10px;
+                }
+            }
+            span:nth-of-type(3){
+                padding-left: 8px;
+                &::after {
+                    content: "$";
+                }
+            }
+            div{
+                position: absolute;
+                top: 0;
+                right: 0px;
+                background: rgba(255,255,255,0.6);
+                width: 40px;
+                text-align: center;
+                padding: 10px 0;
+                font-weight:  bold;
+                cursor:  pointer;
+            }
+        }
     }
 
-    span{
-        display: block;
-    }
+    form {
+        padding: 20px 0 45px;
+        input[type=text] {
+            border: 0;
+            border-bottom: 1px solid #eee;
+            padding: 10px;
+            padding-left: 25px; 
+            display: block;
+            width: 100%;
+            @include responsive-font-size(18px);
+            border-radius: 40px;
+            background-color: rgb(243, 243, 243);
+            &::placeholder {
+                color: rgb(83, 45, 45);
+            }
+            &:focus{
+                outline: none;
+                border-bottom: 3px solid #792a2ada;
+                border-right: 3px solid #792a2ada;
+                padding-bottom: 8px;
+                transition: all ease 0.2s;
+            }
+        }
+        &::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    
 
-    span:nth-child(2){
-        font-size: 16px;
-        margin-top: 6px;
-        color: #999;
+    
+        input[type=submit]{
+            border: 0;
+            display: block;
+            width: 100px;
+            padding: 13px 30px;
+            margin: 0 auto;
+            box-shadow: 3px 3px 3px rgba(182, 79, 79, 0.2);
+            font-weight: bold;
+            letter-spacing: 1px;
+            @media (min-width:567px) and (max-width:767px) {
+                & {
+                    width:100%;
+                }
+            }
+        }
     }
-
-    div{
-        position: absolute;
-        top: 0;
-        right: 0px;
-        background: rgba(255,255,255,0.6);
-        width: 40px;
-        text-align: center;
-        padding: 10px 0;
-        font-weight:  bold;
-        cursor:  pointer;
-    }
-}
-form {
-    input{
-        float: left;
-        width: 38%;
-        margin: 0;
-        border: 0;
-        border-bottom: 1px solid #eee;
-        margin: 0 1%;
-        padding: 10px;
-        display: block;
-        @include responsive-font-size(18px);
-}
-
-    input:focus{
-        outline: none;
-        border-bottom: 3px solid #88236f;
-        padding-bottom: 8px;
-        transition: all ease 0.2s;
-    }
-
-    &::after{
-        content: '';
-        clear: both;
-        display: block;
-    }
-}
-
-button{
-    border: 0;
-    background: #fff;
-    border-radius: 10px;
-    padding: 13px;
-    width: 14%;
-    box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
-    font-weight: bold;
-    font-family: ubuntu;
-    letter-spacing: 1px;
-    color: #999;
 }

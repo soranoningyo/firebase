@@ -14,22 +14,37 @@ html(lang="en")
       //- Styling Sheet File
       link(rel="stylesheet", href="css/styleSheet.css")
       //- FireStore File
-      script(src="js/firebase-app.js")
-      script(src="js/firebasestore.js")
+      script(src="js/firebase/firebase-app.js")
+      script(src="js/firebase/firebasestore.js")
     body
       .container
-      h1 fire Cafe 
-        i(class="fas fa-mug-hot")
+        h1.text-center fire Cafe 
+          i(class="fas fa-mug-hot")
 
-      div.content
-        form#add-cafe-form
+        div.content
+          form#add-cafe-form.overflow-hidden
+            .row
+              .col-lg-3.col-sm-6.col-md-4
+                .inp
+                  input(type="text" name="Coffee" placeholder="Add a coffee" data-toggle="tooltip" data-placement="top" title="This Field Can't Be Empty")
+              .col-lg-3.col-sm-6.col-md-4.mt-3.mt-sm-0
+                .inp
+                  input(type="text" name="City" placeholder="City" data-toggle="tooltip" data-placement="top" title="This Field Can't Be Empty")
+              .col-lg-3.col-sm-6.col-md-4.mt-sm-3.mt-md-0.mt-3
+                .inp
+                  input(type="text" name="Price" placeholder="price" data-toggle="tooltip" data-placement="top" title="This Field Can't Be Empty")
+              .col-lg-3.col-sm-6.col-md-12.mt-sm-3.mt-lg-0.mt-3
+                .inp
+                  input(type="submit" class="btn btn-danger rounded-pill" value="add") 
 
-        ul#cafe-list.list-unstyled
+          ul#cafe-list.list-unstyled.overflow-hidden
+        
 
         
         //- JQuery File
         script(src="js/jquery-3.3.1.min.js")
         //- Bootstrap Js File
-        script(src="js/bootstrap.min.js")
+        script(src="js/bootstrap/popper.min.js")
+        script(src="js/bootstrap/bootstrap.min.js")
         //- Scripting Sheet File
         script(src="js/scriptsheet.js")
