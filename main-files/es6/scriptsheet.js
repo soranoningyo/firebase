@@ -19,9 +19,9 @@ var config = {
 };
 firebase.initializeApp(config);
 const dataBase = firebase.firestore();
-dataBase.settings({
-    timestampsInSnapshots: true
-});
+// dataBase.settings({
+//     timestampsInSnapshots: true
+// });
 
 // Start Project
 
@@ -35,26 +35,59 @@ function renderCafe(doc) {
     let li = document.createElement('li'),
         name = document.createElement('span'),
         city = document.createElement('span'),
-        price = document.createElement('span');
+        price = document.createElement('span'),
+        closer = document.createElement('button');
 
     li.setAttribute('data-id', doc.id);
     name.textContent = doc.data().Coffee;
     city.textContent = doc.data().City;
     price.textContent = doc.data().Price;
+    closer.setAttribute('class', "closer fas fa-trash-alt");
+
+
 
     li.appendChild(name);
     li.appendChild(city);
     li.appendChild(price);
+    li.appendChild(closer);
 
     cafeList.appendChild(li);
-}
 
+    //  Deleting
+    closer.addEventListener('click', (e) => {
+        const id = e.target.parentElement.getAttribute('data-id');
+
+        dataBase.collection('Coffees').doc(id).delete();
+
+    });
+}
 // Get Collections
 
-dataBase.collection('Coffees').get().then((snapshot) => {
-    'use strict';
-    snapshot.docs.forEach((doc) => {
-        renderCafe(doc);
+// dataBase.collection('Coffees').orderBy('Coffee').get().then((snapshot) => {
+//     'use strict';
+
+//     snapshot.docs.forEach((doc) => {
+//         renderCafe(doc);
+//     });
+
+// });
+// Real-time Listener
+dataBase.collection('Coffees').orderBy('City').onSnapshot( (snapshot) => {
+
+    let changes = snapshot.docChanges();
+
+    changes.forEach( (change) => {
+
+        if (change.type == 'added') {
+
+            renderCafe(change.doc);
+
+        } else if (change.type == 'removed') {
+
+            let li = cafeList.querySelector('[data-id=' + change.doc.id + ']');
+            cafeList.removeChild(li);
+
+        }
     });
 });
 
@@ -62,9 +95,9 @@ dataBase.collection('Coffees').get().then((snapshot) => {
 const newCoffee = document.getElementById('add-cafe-form');
 newCoffee.addEventListener('submit', function (e) {
 
-
     e.preventDefault();
-    if (newCoffee.Coffee.value === '' || newCoffee.City.value === '' || newCoffee.Price.value === ''){
+
+    if (newCoffee.Coffee.value === '' || newCoffee.City.value === '' || newCoffee.Price.value === '') {
 
         if (newCoffee.Coffee.value === '') {
 
@@ -78,25 +111,38 @@ newCoffee.addEventListener('submit', function (e) {
             }, 3000);
         }
         if (newCoffee.City.value === '') {
+
             $('input[name="City"]').tooltip('show');
+
             setTimeout(() => {
+
                 $('input[name="City"]').tooltip('hide');
+
             }, 3000);
         }
+
         if (newCoffee.Price.value === '') {
+
             $('input[name="Price"]').tooltip('show');
+
             setTimeout(() => {
+
                 $('input[name="Price"]').tooltip('hide');
+
             }, 3000);
         }
     } else {
         dataBase.collection('Coffees').add({
+
             Coffee: newCoffee.Coffee.value,
             City: newCoffee.City.value,
             Price: newCoffee.Price.value
+
         });
+
+        newCoffee.Coffee.value = '';
+        newCoffee.City.value = '';
+        newCoffee.Price.value = '';
+
     }
-    newCoffee.Coffee.value = '';
-    newCoffee.City.value = '';
-    newCoffee.Price.value = '';
 });
